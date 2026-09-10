@@ -1,0 +1,17 @@
+# Vídeos brutos (originais ficam só no Mac — versões web em midia/videos/)
+/Videos /
+/Videos/
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Acervo de mídia bruta (fotos em alta, PDFs, vídeos 540p) — só local
+/midia/
