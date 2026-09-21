@@ -15,3 +15,8 @@
 
 # Acervo de mídia bruta (fotos em alta, PDFs, vídeos 540p) — só local
 /midia/
+/nova midia para o site/
+/modiicacoes site/
+
+# Fonte do press kit (o PDF gerado vai em site/assets/)
+/presskit-src.html
