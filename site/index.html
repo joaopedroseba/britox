@@ -83,20 +83,25 @@ ul{list-style:none}
 .mono-s{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.3em;text-transform:uppercase;color:var(--osso-45)}
 .halftone{background-image:radial-gradient(circle,var(--rosa) 1.05px,transparent 1.5px);background-size:9px 9px}
 
-/* ---------- cortina de entrada ---------- */
-.curtain{position:fixed;inset:0;z-index:800;pointer-events:none}
-.curtain i{position:absolute;left:0;right:0;height:50.6%;background:var(--void);display:block}
-.curtain i:first-child{top:0;animation:curtUp .82s cubic-bezier(.76,0,.18,1) .06s both}
-.curtain i:last-child{bottom:0;animation:curtDn .82s cubic-bezier(.76,0,.18,1) .06s both}
-.curtain b{
-  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:26px;height:26px;background:var(--rosa);display:block;
-  clip-path:polygon(50% 0,58% 36%,95% 18%,68% 50%,95% 82%,58% 64%,50% 100%,42% 64%,5% 82%,32% 50%,5% 18%,42% 36%);
-  animation:starOut .95s ease-in both;
+/* ---------- abertura ----------
+   uma sequência contínua: o preto dissolve enquanto o vídeo recua,
+   a marca sobe e a fita entra. Todas as peças usam a mesma curva,
+   e a abertura é criada/removida por JS — em repouso a página já
+   está visível, nunca nasce preta. */
+.abertura{
+  position:fixed;inset:0;z-index:800;background:var(--void);pointer-events:none;
+  animation:dissolve 1s cubic-bezier(.42,0,.26,1) .08s both;
 }
-@keyframes curtUp{to{transform:translateY(-101%)}}
-@keyframes curtDn{to{transform:translateY(101%)}}
-@keyframes starOut{0%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0)}55%{opacity:1;transform:translate(-50%,-50%) scale(2.6) rotate(70deg)}100%{opacity:0;transform:translate(-50%,-50%) scale(14) rotate(120deg)}}
+@keyframes dissolve{to{opacity:0}}
+body.abrindo .hero video{animation:recua 2.6s cubic-bezier(.16,.84,.3,1) both}
+@keyframes recua{from{transform:scale(1.14)}to{transform:scale(1)}}
+body.abrindo .hero-logo{animation:sobe 1.3s cubic-bezier(.16,.84,.3,1) .28s both}
+@keyframes sobe{from{opacity:0;transform:translateY(26px) scale(.955)}to{opacity:1;transform:none}}
+body.abrindo .hero-foot{animation:clareia 1s ease .8s both}
+body.abrindo .nav{animation:clareia 1s ease .68s both}
+@keyframes clareia{from{opacity:0}to{opacity:1}}
+body.abrindo .fita{animation:sobeFita 1.15s cubic-bezier(.16,.84,.3,1) .5s both}
+@keyframes sobeFita{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
 
 /* ---------- nav ---------- */
 .nav{
@@ -169,10 +174,6 @@ body.abrindo .hero-logo{animation:logoIn .85s cubic-bezier(.2,.7,.2,1) .5s both}
 }
 .fita .st{padding:0 0 0 26px;font-size:clamp(9px,1vw,13px);color:rgba(242,237,228,.6)}
 @keyframes roda{to{transform:translateX(-50%)}}
-.fita-legenda{
-  max-width:1560px;margin:16px auto 0;padding:0 var(--gut);
-  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-}
 
 /* ---------- seções ---------- */
 section{padding:clamp(86px,11vw,168px) 0;position:relative}
@@ -282,8 +283,9 @@ section{padding:clamp(86px,11vw,168px) 0;position:relative}
   font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--osso-70);
 }
 .parede figcaption .pl{color:var(--rosa)}
+.mapa-titulo{margin-top:clamp(62px,8vw,110px);margin-bottom:clamp(24px,3vw,36px);align-items:baseline}
 .mapa-bloco{
-  margin-top:clamp(62px,8vw,110px);display:grid;
+  display:grid;
   grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(30px,5vw,78px);align-items:start;
 }
 .mapa{position:relative;width:100%;max-width:420px}
@@ -383,9 +385,9 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .curtain{display:none}
+  .abertura{display:none}
   .fita .track,.disco .bolacha,.hero-foot .go span,.mapa .pulso{animation:none!important}
-  .hero-logo{animation:none!important}
+  .hero-logo,.hero video,.fita,.nav,.hero-foot{animation:none!important}
   *{transition-duration:.01ms!important}
 }
 </style>
@@ -434,10 +436,6 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
       <div class="g">mepb</div><div class="st">✶</div>
     </div>
   </div>
-  <div class="fita-legenda">
-    <p class="kicker">territórios de pesquisa</p>
-    <p class="mono-s">não são etiquetas — são caminhos</p>
-  </div>
 </div>
 
 <!-- ============ SOBRE ============ -->
@@ -449,7 +447,7 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
     </div>
     <div class="grid">
       <div class="retrato">
-        <img src="assets/img/britox-headphones.jpg" alt="Britox de fones, retrato em preto e branco">
+        <img src="assets/img/sobre.jpg" alt="Britox de fones, retrato em preto e branco">
         <div class="moldura"></div>
         <div class="credito">
           <span class="mono-s">gabriela brito</span>
@@ -527,34 +525,38 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
     </div>
 
     <div class="parede" id="parede">
-      <figure class="alto" data-v="assets/video/reel-braasa.mp4">
-        <img src="assets/img/poster-reel-braasa.jpg" alt="Braasa, Atins">
-        <figcaption><span>braasa · atins</span><span class="pl">▶</span></figcaption>
+      <figure class="alto" data-v="assets/video/reel-charme.mp4">
+        <img src="assets/img/poster-reel-charme.jpg" alt="Sunset Charme Beach Bar, Atins" loading="lazy">
+        <figcaption><span>charme beach bar · atins</span><span class="pl">▶</span></figcaption>
       </figure>
-      <figure data-v="assets/video/reel-pista.mp4">
-        <img src="assets/img/poster-reel-pista.jpg" alt="Pista">
-        <figcaption><span>pista</span><span class="pl">▶</span></figcaption>
+      <figure data-v="assets/video/reel-baile.mp4">
+        <img src="assets/img/poster-reel-baile.jpg" alt="Baile do Sound, Atins" loading="lazy">
+        <figcaption><span>baile do sound · atins</span><span class="pl">▶</span></figcaption>
       </figure>
-      <figure data-v="assets/video/reel-praia.mp4">
-        <img src="assets/img/poster-reel-praia.jpg" alt="Beach club">
-        <figcaption><span>sunset · beach club</span><span class="pl">▶</span></figcaption>
+      <figure data-v="assets/video/reel-sunset.mp4">
+        <img src="assets/img/poster-reel-sunset.jpg" alt="Sunset em Atins" loading="lazy">
+        <figcaption><span>sunset · atins</span><span class="pl">▶</span></figcaption>
       </figure>
-      <figure class="alto" data-v="assets/video/reel-selva.mp4">
-        <img src="assets/img/poster-reel-selva.jpg" alt="Na mata">
+      <figure class="alto" data-v="assets/video/reel-jungle.mp4">
+        <img src="assets/img/poster-reel-jungle.jpg" alt="Jungle, Atins" loading="lazy">
         <figcaption><span>jungle · atins</span><span class="pl">▶</span></figcaption>
       </figure>
-      <figure data-v="assets/video/reel-b2b.mp4">
-        <img src="assets/img/poster-reel-b2b.jpg" alt="B2B">
-        <figcaption><span>b2b</span><span class="pl">▶</span></figcaption>
+      <figure data-v="assets/video/reel-corrida.mp4">
+        <img src="assets/img/poster-reel-corrida.jpg" alt="MC Corrida, Vila Velha" loading="lazy">
+        <figcaption><span>mc corrida · vila velha</span><span class="pl">▶</span></figcaption>
       </figure>
-      <figure data-v="assets/video/reel-roxo.mp4">
-        <img src="assets/img/poster-reel-roxo.jpg" alt="Atrás das decks">
-        <figcaption><span>atrás das decks</span><span class="pl">▶</span></figcaption>
+      <figure data-v="assets/video/reel-aselva.mp4">
+        <img src="assets/img/poster-reel-aselva.jpg" alt="A Selva, Vitória" loading="lazy">
+        <figcaption><span>a selva · vitória</span><span class="pl">▶</span></figcaption>
       </figure>
     </div>
   </div>
 
   <div class="wrap">
+    <div class="cab mapa-titulo">
+      <p class="lede">trajetória</p>
+      <p class="mono-s">três estados · dezoito registros</p>
+    </div>
     <div class="mapa-bloco">
       <div class="mapa">
         <svg viewBox="-26 -26 604 600" role="img" aria-label="Mapa do Brasil com os estados onde Britox já tocou">
@@ -665,19 +667,16 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
 (function(){
   var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* --- cortina de entrada: criada por JS e removida depois, para que o
-         estado de repouso da página seja sempre "visível", nunca preto --- */
+  /* --- abertura: criada por JS e removida depois, para que o estado de
+         repouso da página seja sempre "visível", nunca preto --- */
   if(!reduz){
     var cort = document.createElement('div');
-    cort.className = 'curtain';
+    cort.className = 'abertura';
     cort.setAttribute('aria-hidden','true');
-    cort.innerHTML = '<i></i><i></i><b></b>';
     document.body.insertBefore(cort, document.body.firstChild);
     document.body.classList.add('abrindo');
-    setTimeout(function(){
-      if(cort.parentNode) cort.parentNode.removeChild(cort);
-      document.body.classList.remove('abrindo');
-    }, 1700);
+    setTimeout(function(){ if(cort.parentNode) cort.parentNode.removeChild(cort); }, 1500);
+    setTimeout(function(){ document.body.classList.remove('abrindo'); }, 3200);
   }
 
   /* --- nav: fundo ao sair do hero + item ativo --- */

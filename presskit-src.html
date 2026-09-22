@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>BRITOX — Press Kit 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#09080B;
+  --carvao:#111013;
+  --sangue:#C2181B;
+  --rosa:#FF2E6E;
+  --osso:#F2EDE4;
+  --osso-70:rgba(242,237,228,.70);
+  --osso-45:rgba(242,237,228,.45);
+  --osso-28:rgba(242,237,228,.28);
+  --linha:rgba(242,237,228,.14);
+  --linha-forte:rgba(242,237,228,.30);
+  --display:'Bodoni Moda',Didot,Georgia,serif;
+  --sans:'Instrument Sans',Helvetica,Arial,sans-serif;
+  --mono:'Azeret Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@page{size:A4;margin:0}
+body{font-family:var(--sans);color:var(--osso);background:var(--void)}
+ul{list-style:none}
+img{display:block;max-width:100%}
+
+.page{
+  width:210mm;height:296mm;overflow:hidden;position:relative;
+  background:var(--void);padding:15mm 15mm 12mm;
+  display:flex;flex-direction:column;page-break-after:always;
+}
+.page:last-child{page-break-after:auto}
+
+.halftone{background-image:radial-gradient(circle,var(--rosa) .9px,transparent 1.3px);background-size:8px 8px}
+
+.kicker{font-family:var(--mono);font-size:7.5pt;font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:var(--rosa)}
+.kicker::before{content:"✶ "}
+.mono-s{font-family:var(--mono);font-size:7pt;letter-spacing:.28em;text-transform:uppercase;color:var(--osso-45)}
+.lede{font-family:var(--display);font-style:italic;font-weight:400;font-size:19pt;line-height:1.1;letter-spacing:-.01em}
+
+/* ---------- capa ---------- */
+.topo{display:flex;align-items:flex-start;justify-content:space-between;gap:8mm;position:relative;z-index:2}
+.topo img{height:13mm;width:auto}
+.topo .tag{font-family:var(--mono);font-size:7.5pt;letter-spacing:.3em;text-transform:uppercase;color:var(--osso-28);text-align:right;line-height:2}
+
+.capa-hero{display:grid;grid-template-columns:1fr 1.12fr;gap:9mm;align-items:center;margin-top:9mm;position:relative;z-index:2}
+.capa-foto{position:relative}
+.capa-foto img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.18) brightness(.95)}
+.capa-foto .moldura{position:absolute;inset:0;border:1px solid var(--linha-forte)}
+.capa-foto .cred{margin-top:2.4mm;display:flex;justify-content:space-between;gap:4mm}
+
+.intro p{color:var(--osso);font-size:11pt;line-height:1.6}
+.intro p strong{font-weight:600}
+.intro .sub{color:var(--osso-70);font-size:9.6pt;line-height:1.68;margin-top:4mm}
+
+.generos{
+  background:var(--sangue);padding:3mm 5mm;margin:8mm 0 7mm;position:relative;z-index:2;
+  font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:11pt;letter-spacing:-.01em;text-align:center;color:var(--osso);
+}
+.sobre p{color:var(--osso-70);font-size:9.4pt;line-height:1.7;margin-bottom:3mm;position:relative;z-index:2}
+.sobre p strong{color:var(--osso);font-weight:600}
+
+.tira-fotos{
+  margin-top:7mm;display:grid;grid-template-columns:1fr 1fr;gap:3mm;position:relative;z-index:2;
+}
+.tira-fotos img{width:100%;aspect-ratio:16/10;object-fit:cover;filter:contrast(1.06) saturate(.92)}
+.pe{margin-top:auto;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--linha);padding-top:3.5mm;position:relative;z-index:2}
+
+/* ---------- página 2 ---------- */
+.sec{margin-bottom:7mm;position:relative;z-index:2}
+.sec-cab{display:flex;align-items:baseline;justify-content:space-between;gap:5mm;margin-bottom:3.5mm}
+
+.fichas{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm;border-top:1px solid var(--linha);padding-top:3.5mm}
+.fichas dt{font-family:var(--mono);font-size:6.6pt;letter-spacing:.28em;text-transform:uppercase;color:var(--osso-28);margin-bottom:1.4mm}
+.fichas dd{font-size:8.6pt;line-height:1.45;font-weight:500}
+
+.musica{display:grid;grid-template-columns:34mm 1fr;gap:6mm;align-items:center}
+.musica .capa-mix{width:34mm;aspect-ratio:1;border:1px solid var(--linha-forte)}
+.musica .capa-mix img{width:100%;height:100%;object-fit:cover}
+.musica h3{font-family:var(--display);font-weight:500;font-size:20pt;line-height:.98;letter-spacing:-.02em;text-transform:lowercase}
+.musica h3 em{font-style:italic;color:var(--sangue)}
+.musica .meta{font-family:var(--mono);font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;color:var(--osso-45);margin-top:2.2mm}
+.musica .link{font-family:var(--mono);font-size:8pt;letter-spacing:.14em;color:var(--osso-70);margin-top:3mm;border-bottom:1px solid var(--linha-forte);display:inline-block;padding-bottom:1mm}
+
+.uf{border-top:1px solid var(--linha);padding:3.2mm 0}
+.uf:last-child{border-bottom:1px solid var(--linha)}
+.uf-cab{display:flex;align-items:baseline;gap:3mm;margin-bottom:2mm}
+.uf-cab h4{font-family:var(--display);font-weight:500;font-size:13pt;text-transform:lowercase;letter-spacing:-.015em;line-height:1}
+.uf-cab .qt{font-family:var(--mono);font-size:6.6pt;letter-spacing:.24em;color:var(--osso-28)}
+.uf ul{display:flex;flex-wrap:wrap;row-gap:1.6mm}
+.uf li{font-family:var(--mono);font-size:7pt;line-height:1.5;color:var(--osso-45)}
+.uf li b{font-family:var(--sans);font-size:8.2pt;font-weight:500;color:var(--osso-70);letter-spacing:0}
+.uf li::after{content:"✶";color:var(--sangue);margin:0 2.6mm;font-size:5.6pt;vertical-align:1pt}
+.uf li:last-child::after{content:""}
+
+.rodape-2{margin-top:auto;position:relative;z-index:2}
+.booking-txt{color:var(--osso-70);font-size:9pt;line-height:1.6;margin-bottom:4mm;max-width:88mm}
+.contatos{display:grid;grid-template-columns:1fr 1fr;gap:0 8mm;border-top:1px solid var(--linha)}
+.contatos div{display:flex;align-items:baseline;justify-content:space-between;gap:4mm;border-bottom:1px solid var(--linha);padding:2.6mm 0}
+.contatos .l{font-family:var(--mono);font-size:6.6pt;letter-spacing:.26em;text-transform:uppercase;color:var(--osso-28)}
+.contatos .v{font-size:9pt;font-weight:500}
+
+.p2-pe{display:flex;justify-content:space-between;align-items:center;gap:6mm;margin-top:5mm;border-top:1px solid var(--linha);padding-top:3.5mm}
+.p2-pe img{height:7mm;width:auto;opacity:.85}
+
+.mancha{position:absolute;pointer-events:none;z-index:1}
+</style>
+</head>
+<body>
+
+<!-- ================= PÁGINA 1 ================= -->
+<div class="page">
+    <div class="mancha halftone" style="right:-18mm;top:-14mm;width:78mm;height:78mm;opacity:.16;-webkit-mask-image:radial-gradient(circle,#000 25%,transparent 68%);mask-image:radial-gradient(circle,#000 25%,transparent 68%)"></div>
+
+  <div class="topo">
+    <img src="site/assets/img/logo-britox.png" alt="BRITOX">
+    <p class="tag">press kit 2026<br>brasil &amp; latam</p>
+  </div>
+
+  <div class="capa-hero">
+    <div class="capa-foto">
+      <img src="presskit-assets/pk-sobre.jpg" alt="Britox">
+      <div class="moldura"></div>
+      <div class="cred">
+        <span class="mono-s">gabriela brito</span>
+        <span class="mono-s">es · br</span>
+      </div>
+    </div>
+    <div class="intro">
+      <p class="kicker" style="margin-bottom:4mm">sobre</p>
+      <p><strong>Britox</strong> é o projeto musical da DJ, jornalista e viajante capixaba <strong>Gabriela Brito</strong>.</p>
+      <p class="sub">Sua pesquisa parte da música brasileira, mas não se limita a ela: costura vocais, percussões e elementos brasileiros à linguagem da pista, entre referências locais e globais.</p>
+    </div>
+  </div>
+
+  <p class="generos">house · techno · funk · disco · boogie · latin · brazilian edits · afro-latin grooves · brazilian funk · mepb</p>
+
+  <div class="sobre">
+    <p>Entre house, techno, funk, disco, boogie e grooves afrolatinos, Britox cria sets que atravessam referências locais e globais, costurando vocais, percussões e elementos da música brasileira à linguagem da pista.</p>
+    <p>A pesquisa se adapta à atmosfera: pode construir um sunset, acompanhar um ambiente mais contemplativo ou conduzir uma pista quente e dançante. Em diferentes intensidades, seus sets têm como fio condutor o <strong>groove</strong>, a <strong>presença vocal</strong> e a construção de uma <strong>experiência coletiva</strong>.</p>
+    <p>Capixaba e viajante, sua relação com o litoral, a cultura urbana e a música brasileira atravessa esse universo — sem se prender a um único gênero ou formato.</p>
+  </div>
+
+  <div class="tira-fotos">
+    <figure><img src="presskit-assets/pk-retrato2.jpg" alt="Britox — ensaio"></figure>
+    <figure><img src="presskit-assets/pk-pista.jpg" alt="Britox na pista"></figure>
+  </div>
+
+  <div class="pe">
+    <span class="mono-s">britox ✶ gabriela brito</span>
+    <span class="mono-s">britox.vercel.app</span>
+  </div>
+</div>
+
+<!-- ================= PÁGINA 2 ================= -->
+<div class="page">
+  
+  <div class="sec">
+    <p class="kicker" style="margin-bottom:3.5mm">informações</p>
+    <dl class="fichas">
+      <div><dt>base</dt><dd>Espírito Santo<br>Brasil</dd></div>
+      <div><dt>projeto</dt><dd>Britox</dd></div>
+      <div><dt>atuação</dt><dd>Brasil<br>LATAM</dd></div>
+      <div><dt>formatos</dt><dd>Clubs · festivais<br>eventos · residências<br>sunsets</dd></div>
+    </dl>
+  </div>
+
+  <div class="sec">
+    <div class="sec-cab">
+      <p class="lede">música</p>
+      <span class="mono-s">soundcloud · /britoxxx</span>
+    </div>
+    <div class="musica">
+      <div class="capa-mix"><img src="presskit-assets/pk-capa.jpg" alt="Brasil em Transe 001"></div>
+      <div>
+        <h3>brasil em <em>transe</em> 001</h3>
+        <p class="meta">set gravado · 31:47 · sets, edits e mixtapes</p>
+        <p class="link">soundcloud.com/britoxxx/brasil-em-transe-001</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-cab">
+      <p class="lede">trajetória</p>
+      <span class="mono-s">três estados · dezoito registros</span>
+    </div>
+    <div class="uf">
+      <div class="uf-cab"><h4>espírito santo</h4><span class="qt">base · 7</span></div>
+      <ul>
+        <li><b>Gastafest</b> cariacica · dez 2025</li>
+        <li><b>Festival de Pescados de Jesus de Nazareth</b> vitória · out 2025</li>
+        <li><b>A Selva</b> bad baile</li>
+        <li><b>Bolt</b> festa mormaço</li>
+        <li><b>Fluente</b> mega festa</li>
+        <li><b>MC Corrida / Movimento Cidade</b> vila velha · ago 2026</li>
+        <li><b>Matrix Music Hall</b></li>
+      </ul>
+    </div>
+    <div class="uf">
+      <div class="uf-cab"><h4>maranhão</h4><span class="qt">lençóis · 9</span></div>
+      <ul>
+        <li><b>Braasa</b> atins · jul 2026</li>
+        <li><b>Baile do Sound</b> atins · ago 2026</li>
+        <li><b>Samba do Lençóis</b> atins · set 2026</li>
+        <li><b>Sunset Lar Doce Mar</b> atins</li>
+        <li><b>B2B Jota Macedo</b> sunset charme beach bar · atins</li>
+        <li><b>B2B Lessa</b> jungle · atins</li>
+        <li><b>Flor de Vinagreira</b> santo amaro · jun 2026</li>
+        <li><b>Quintal do Casarão</b> santo amaro · jun 2026</li>
+        <li><b>Nova Brasillis 11</b> são luís · set 2026</li>
+      </ul>
+    </div>
+    <div class="uf">
+      <div class="uf-cab"><h4>bahia</h4><span class="qt">litoral · 2</span></div>
+      <ul>
+        <li><b>Casa Cultural Serra do Lapão</b> lençóis · mar 2026</li>
+        <li><b>Festa Ano Novo Casa de Minas</b> cumuruxatiba · 2025/2026</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="rodape-2">
+    <div class="sec-cab">
+      <p class="lede">booking</p>
+    </div>
+    <p class="booking-txt">Disponível para clubs, festivais, eventos privados, beach clubs e residências — Brasil &amp; LATAM.</p>
+    <div class="contatos">
+      <div><span class="l">whatsapp</span><span class="v">+55 27 99721-8376</span></div>
+      <div><span class="l">e-mail</span><span class="v">britoxdj@gmail.com</span></div>
+      <div><span class="l">instagram</span><span class="v">@gabrielabritox</span></div>
+      <div><span class="l">soundcloud</span><span class="v">/britoxxx</span></div>
+    </div>
+    <div class="p2-pe">
+      <img src="site/assets/img/logo-britox.png" alt="britox">
+      <span class="mono-s">© 2026 britox ✶ gabriela brito ✶ britox.vercel.app</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
