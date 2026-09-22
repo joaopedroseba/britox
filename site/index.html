@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BRITOX</title>
-<meta name="description" content="BRITOX é o projeto musical da DJ, jornalista e viajante capixaba Gabriela Brito. Entre house, techno, funk, disco, boogie e grooves afrolatinos — sets que costuram a música brasileira à linguagem da pista. Booking Brasil & LATAM.">
+<meta name="description" content="BRITOX é o projeto musical da DJ, jornalista e viajante capixaba Gabriela Brito. Entre house, techno, funk, disco, dance e grooves afrolatinos — sets que costuram a música brasileira à linguagem da pista. Booking Brasil & LATAM.">
 <meta property="og:title" content="BRITOX">
 <meta property="og:description" content="Projeto musical da DJ capixaba Gabriela Brito. Sets entre a música brasileira e a linguagem da pista. Booking Brasil & LATAM.">
 <meta property="og:type" content="website">
@@ -118,7 +118,8 @@ body.abrindo .fita{animation:sobeFita 1.15s cubic-bezier(.16,.84,.3,1) .5s both}
   padding-top:calc(12px + env(safe-area-inset-top,0px));padding-bottom:12px;
   border-color:var(--linha);
 }
-.nav-logo img{height:20px;width:auto;mix-blend-mode:screen;transition:opacity .3s}
+.nav.solto .nav-logo img{height:26px}
+.nav-logo img{height:32px;width:auto;mix-blend-mode:screen;transition:opacity .3s,height .5s ease}
 .nav-logo:hover img{opacity:.72}
 .nav ul{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:clamp(13px,2.6vw,36px);align-items:center}
 .nav ul a{
@@ -147,8 +148,6 @@ body.abrindo .fita{animation:sobeFita 1.15s cubic-bezier(.16,.84,.3,1) .5s both}
   -webkit-mask-image:linear-gradient(180deg,transparent,#000 88%);mask-image:linear-gradient(180deg,transparent,#000 88%);
 }
 .hero-logo{position:relative;z-index:3;width:min(660px,78vw);mix-blend-mode:screen}
-body.abrindo .hero-logo{animation:logoIn .85s cubic-bezier(.2,.7,.2,1) .5s both}
-@keyframes logoIn{from{clip-path:inset(0 0 100% 0);transform:translateY(16px)}to{clip-path:inset(0 0 -2% 0);transform:none}}
 .hero-foot{
   position:absolute;z-index:3;left:0;right:0;bottom:22px;
   display:flex;justify-content:space-between;align-items:flex-end;gap:14px;
@@ -268,8 +267,9 @@ section{padding:clamp(86px,11vw,168px) 0;position:relative}
 .arquivo-lista li.vazio .tt{font-style:italic;color:var(--osso-45)}
 
 /* ---------- ao vivo ---------- */
-.parede{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:clamp(10px,2vw,22px)}
-.parede figure{position:relative;overflow:hidden;background:#000;cursor:pointer}
+.parede{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:clamp(10px,2vw,22px);grid-auto-flow:dense}
+.parede figure{position:relative;overflow:hidden;background:#000}
+.parede figure[data-v]{cursor:pointer}
 .parede img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;filter:contrast(1.08) saturate(.85);transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter .6s}
 .parede video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
 .parede figure.play video{opacity:1}
@@ -349,10 +349,13 @@ section{padding:clamp(86px,11vw,168px) 0;position:relative}
 /* ---------- rodapé ---------- */
 footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-area-inset-bottom,0px))}
 .pe{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-.pe img{height:18px;width:auto;mix-blend-mode:screen;opacity:.85}
+.pe img{height:34px;width:auto;mix-blend-mode:screen;opacity:.9}
 .pe-links{display:flex;gap:clamp(14px,2.4vw,30px);flex-wrap:wrap}
 .pe-links a{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.24em;text-transform:uppercase;color:var(--osso-45);transition:color .3s}
 .pe-links a:hover{color:var(--rosa)}
+.pe-fim{display:flex;flex-direction:column;align-items:flex-end;gap:7px;text-align:right}
+.pe-fim .credito{color:var(--osso-28)}
+.pe-fim .credito span{color:var(--osso-45)}
 
 /* ---------- responsivo ---------- */
 @media (max-width:980px){
@@ -428,7 +431,7 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
       <div class="g">techno</div><div class="st">✶</div>
       <div class="g">funk</div><div class="st">✶</div>
       <div class="g">disco</div><div class="st">✶</div>
-      <div class="g">boogie</div><div class="st">✶</div>
+      <div class="g">dance</div><div class="st">✶</div>
       <div class="g">latin</div><div class="st">✶</div>
       <div class="g">brazilian edits</div><div class="st">✶</div>
       <div class="g">afro-latin grooves</div><div class="st">✶</div>
@@ -456,7 +459,7 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
       </div>
       <div>
         <p class="body abre"><strong>Britox</strong> é o projeto musical da DJ, jornalista e viajante capixaba <strong>Gabriela Brito</strong>. Sua pesquisa parte da música brasileira, mas não se limita a ela: costura vocais, percussões e elementos brasileiros à linguagem da pista, entre referências locais e globais.</p>
-        <p class="body">Entre house, techno, funk, disco, boogie e grooves afrolatinos, Britox cria sets que atravessam referências locais e globais, costurando vocais, percussões e elementos da música brasileira à linguagem da pista.</p>
+        <p class="body">Entre house, techno, funk, disco, dance e grooves afrolatinos, Britox cria sets que atravessam referências locais e globais, costurando vocais, percussões e elementos da música brasileira à linguagem da pista.</p>
         <p class="body">A pesquisa se adapta à atmosfera: pode construir um sunset, acompanhar um ambiente mais contemplativo ou conduzir uma pista quente e dançante. Em diferentes intensidades, seus sets têm como fio condutor o groove, a presença vocal e a construção de uma experiência coletiva.</p>
         <p class="body">Capixaba e viajante, sua relação com o litoral, a cultura urbana e a música brasileira atravessa esse universo — sem se prender a um único gênero ou formato.</p>
         <dl class="fichas">
@@ -483,22 +486,22 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
       <div class="disco" id="disco">
         <div class="bolacha">
           <div class="sulcos"></div>
-          <div class="miolo"><b>britox</b><span>001</span></div>
+          <div class="miolo"><b>britox</b><span id="mioloNum">001</span></div>
         </div>
         <div class="capa-mix">
-          <img src="assets/img/capa-brasil-em-transe-001.jpg" alt="Brasil em Transe 001 — capa do mix no SoundCloud">
+          <img id="capaMix" src="assets/img/capa-brasil-em-transe-001.jpg" alt="Brasil em Transe 001 — capa do mix no SoundCloud">
         </div>
         <svg class="burst" viewBox="0 0 200 200" aria-hidden="true"></svg>
       </div>
       <div class="faixa-info">
         <p class="num">destaque ✶ set completo</p>
-        <h3>brasil em <em>transe</em> 001</h3>
+        <h3 id="faixaTitulo">brasil em transe <em>001</em></h3>
         <p class="sub">sets gravados, edits e mixtapes</p>
         <div class="player">
-          <iframe title="Britox — Brasil em Transe 001 no SoundCloud" loading="lazy" allow="autoplay"
+          <iframe id="faixaPlayer" title="Britox no SoundCloud" loading="lazy" allow="autoplay"
             src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fbritoxxx%2Fbrasil-em-transe-001&color=%23c2181b&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
         </div>
-        <a class="ouvir" href="https://soundcloud.com/britoxxx/brasil-em-transe-001" target="_blank" rel="noopener">ouvir na íntegra →</a>
+        <a class="ouvir" id="faixaLink" href="https://soundcloud.com/britoxxx/brasil-em-transe-001" target="_blank" rel="noopener">ouvir na íntegra →</a>
       </div>
     </div>
 
@@ -507,7 +510,9 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
         <p class="lede">sets</p>
         <a class="mono-s" href="https://soundcloud.com/britoxxx" target="_blank" rel="noopener">todos os sets ↗</a>
       </div>
-      <ul class="arquivo-lista">
+      <!-- esta lista é reescrita pelo /api/sets no carregamento; o que está
+           aqui é o que já existe hoje e o que aparece se a chamada falhar -->
+      <ul class="arquivo-lista" id="listaSets">
         <li><a class="row" href="https://soundcloud.com/britoxxx/brasil-em-transe-001" target="_blank" rel="noopener"><span class="ix">001</span><span class="tt">brasil em transe</span><span class="tp">set gravado · 31:47</span></a></li>
         <li class="vazio"><div class="row"><span class="ix">002</span><span class="tt">próxima entrada</span><span class="tp">em pesquisa</span></div></li>
         <li class="vazio"><div class="row"><span class="ix">003</span><span class="tt">próxima entrada</span><span class="tp">em pesquisa</span></div></li>
@@ -525,21 +530,25 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
     </div>
 
     <div class="parede" id="parede">
-      <figure class="alto" data-v="assets/video/reel-charme.mp4">
-        <img src="assets/img/poster-reel-charme.jpg" alt="Sunset Charme Beach Bar, Atins" loading="lazy">
-        <figcaption><span>charme beach bar · atins</span><span class="pl">▶</span></figcaption>
+      <figure class="alto" data-v="assets/video/reel-braasa.mp4">
+        <img src="assets/img/poster-reel-braasa.jpg" alt="Braasa, Atins" loading="lazy">
+        <figcaption><span>braasa · atins</span><span class="pl">▶</span></figcaption>
       </figure>
-      <figure data-v="assets/video/reel-baile.mp4">
+      <figure>
+        <img src="assets/img/foto-gastafest.jpg" alt="Gastafest, Cariacica" loading="lazy">
+        <figcaption><span>gastafest · cariacica</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/foto-novabrasilis.jpg" alt="Nova Brasillis 11, São Luís" loading="lazy">
+        <figcaption><span>nova brasillis · são luís</span></figcaption>
+      </figure>
+      <figure class="alto" data-v="assets/video/reel-baile.mp4">
         <img src="assets/img/poster-reel-baile.jpg" alt="Baile do Sound, Atins" loading="lazy">
         <figcaption><span>baile do sound · atins</span><span class="pl">▶</span></figcaption>
       </figure>
-      <figure data-v="assets/video/reel-sunset.mp4">
-        <img src="assets/img/poster-reel-sunset.jpg" alt="Sunset em Atins" loading="lazy">
-        <figcaption><span>sunset · atins</span><span class="pl">▶</span></figcaption>
-      </figure>
-      <figure class="alto" data-v="assets/video/reel-jungle.mp4">
-        <img src="assets/img/poster-reel-jungle.jpg" alt="Jungle, Atins" loading="lazy">
-        <figcaption><span>jungle · atins</span><span class="pl">▶</span></figcaption>
+      <figure>
+        <img src="assets/img/foto-lessa.jpg" alt="B2B Lessa, Jungle, Atins" loading="lazy">
+        <figcaption><span>b2b lessa · atins</span></figcaption>
       </figure>
       <figure data-v="assets/video/reel-corrida.mp4">
         <img src="assets/img/poster-reel-corrida.jpg" alt="MC Corrida, Vila Velha" loading="lazy">
@@ -549,13 +558,25 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
         <img src="assets/img/poster-reel-aselva.jpg" alt="A Selva, Vitória" loading="lazy">
         <figcaption><span>a selva · vitória</span><span class="pl">▶</span></figcaption>
       </figure>
+      <figure>
+        <img src="assets/img/foto-pista.jpg" alt="Pista na Nova Brasillis, São Luís" loading="lazy">
+        <figcaption><span>pista · são luís</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/foto-ensaio-1.jpg" alt="Britox — ensaio" loading="lazy">
+        <figcaption><span>ensaio</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/img/foto-ensaio-2.jpg" alt="Britox — ensaio" loading="lazy">
+        <figcaption><span>ensaio</span></figcaption>
+      </figure>
     </div>
   </div>
 
   <div class="wrap">
     <div class="cab mapa-titulo">
       <p class="lede">trajetória</p>
-      <p class="mono-s">três estados · dezoito registros</p>
+      <p class="mono-s">três estados · 8 cidades</p>
     </div>
     <div class="mapa-bloco">
       <div class="mapa">
@@ -591,11 +612,11 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
           <ul>
             <li><b>Gastafest</b> cariacica · dez 2025</li>
             <li><b>Festival de Pescados de Jesus de Nazareth</b> vitória · out 2025</li>
-            <li><b>A Selva</b> bad baile</li>
-            <li><b>Bolt</b> festa mormaço</li>
-            <li><b>Fluente</b> mega festa</li>
+            <li><b>A Selva</b> vitória · diversas festas</li>
+            <li><b>Bolt</b> vitória · diversas festas</li>
+            <li><b>Fluente</b> vitória · diversas festas</li>
             <li><b>MC Corrida / Movimento Cidade</b> vila velha · ago 2026</li>
-            <li><b>Matrix Music Hall</b></li>
+            <li><b>Espírito Sound</b> cariacica · matrix music hall · nov 2026</li>
           </ul>
         </div>
         <div class="uf" data-uf="ma">
@@ -604,9 +625,9 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
             <li><b>Braasa</b> atins · jul 2026</li>
             <li><b>Baile do Sound</b> atins · ago 2026</li>
             <li><b>Samba do Lençóis</b> atins · set 2026</li>
-            <li><b>Sunset Lar Doce Mar</b> atins</li>
-            <li><b>B2B Jota Macedo</b> sunset charme beach bar · atins</li>
-            <li><b>B2B Lessa</b> jungle · atins</li>
+            <li><b>Lar Doce Mar</b> sunsets alta temporada atins 2026</li>
+            <li><b>Charme Beach Bar</b> sunsets alta temporada atins 2026</li>
+            <li><b>Jungle</b> diversas apresentações na alta temporada atins 2026</li>
             <li><b>Flor de Vinagreira</b> santo amaro · jun 2026</li>
             <li><b>Quintal do Casarão</b> santo amaro · jun 2026</li>
             <li><b>Nova Brasillis 11</b> são luís · set 2026</li>
@@ -659,7 +680,10 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
       <a href="assets/britox-presskit-2026.pdf" download="britox-presskit-2026.pdf">press kit</a>
       <a href="mailto:britoxdj@gmail.com">e-mail</a>
     </div>
-    <p class="mono-s">© 2026 britox ✶ gabriela brito</p>
+    <div class="pe-fim">
+      <p class="mono-s">© 2026 britox ✶ gabriela brito</p>
+      <p class="mono-s credito">Desenvolvido por <span>Explore Marketing</span></p>
+    </div>
   </div>
 </footer>
 
@@ -736,7 +760,7 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
   }
 
   /* --- parede: vídeo ao passar o mouse / tocar --- */
-  document.querySelectorAll('.parede figure').forEach(function(f){
+  document.querySelectorAll('.parede figure[data-v]').forEach(function(f){
     var v = null;
     function liga(){
       if(!v){
@@ -763,8 +787,83 @@ footer{border-top:1px solid var(--linha);padding:34px 0 calc(72px + env(safe-are
         }
       });
     }, {threshold:.2});
-    document.querySelectorAll('.parede figure').forEach(function(f){ vio.observe(f); });
+    document.querySelectorAll('.parede figure[data-v]').forEach(function(f){ vio.observe(f); });
   }
+
+  /* --- sets: vêm do feed do SoundCloud via /api/sets, então um set novo
+         publicado lá aparece aqui sozinho, sem deploy. Se a chamada falhar,
+         fica o que já está no HTML. --- */
+  (function(){
+    var lista = document.getElementById('listaSets');
+    if(!lista || !window.fetch) return;
+
+    var num = function(n){ return String(n).padStart(3,'0'); };
+
+    // "brasil em transe ✶ 001" -> "brasil em transe" + <em>001</em>
+    function titulo(alvo, texto){
+      var p = texto.split('✶');
+      alvo.textContent = (p[0] || texto).trim();
+      if(p.length > 1){
+        var em = document.createElement('em');
+        em.textContent = p.slice(1).join('✶').trim();
+        alvo.appendChild(document.createTextNode(' '));
+        alvo.appendChild(em);
+      }
+    }
+
+    function linha(s, n){
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.className = 'row'; a.href = s.url; a.target = '_blank'; a.rel = 'noopener';
+      var ix = document.createElement('span'); ix.className = 'ix'; ix.textContent = num(n);
+      var tt = document.createElement('span'); tt.className = 'tt';
+      tt.textContent = s.titulo.split('✶')[0].trim() || s.titulo;
+      var tp = document.createElement('span'); tp.className = 'tp';
+      tp.textContent = 'set gravado' + (s.duracao ? ' · ' + s.duracao : '');
+      a.appendChild(ix); a.appendChild(tt); a.appendChild(tp); li.appendChild(a);
+      return li;
+    }
+
+    function vazia(n){
+      var li = document.createElement('li'); li.className = 'vazio';
+      var d = document.createElement('div'); d.className = 'row';
+      var ix = document.createElement('span'); ix.className = 'ix'; ix.textContent = num(n);
+      var tt = document.createElement('span'); tt.className = 'tt'; tt.textContent = 'próxima entrada';
+      var tp = document.createElement('span'); tp.className = 'tp'; tp.textContent = 'em pesquisa';
+      d.appendChild(ix); d.appendChild(tt); d.appendChild(tp); li.appendChild(d);
+      return li;
+    }
+
+    fetch('/api/sets')
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        var sets = d && d.sets;
+        if(!sets || !sets.length) return;
+
+        // do mais novo para o mais antigo; o mais antigo é o 001
+        lista.innerHTML = '';
+        sets.forEach(function(s, i){ lista.appendChild(linha(s, sets.length - i)); });
+        for(var n = sets.length + 1; n <= 3; n++) lista.appendChild(vazia(n));
+
+        // o destaque passa a ser o set mais recente
+        var topo = sets[0], total = sets.length;
+        var h3 = document.getElementById('faixaTitulo');
+        if(h3) titulo(h3, topo.titulo);
+        var mio = document.getElementById('mioloNum');
+        if(mio) mio.textContent = num(total);
+        var capa = document.getElementById('capaMix');
+        if(capa && topo.capa){ capa.src = topo.capa; capa.alt = topo.titulo + ' — capa do mix no SoundCloud'; }
+        var link = document.getElementById('faixaLink');
+        if(link) link.href = topo.url;
+        var player = document.getElementById('faixaPlayer');
+        if(player){
+          player.src = 'https://w.soundcloud.com/player/?url=' + encodeURIComponent(topo.url) +
+            '&color=%23c2181b&auto_play=false&hide_related=true&show_comments=false' +
+            '&show_user=true&show_reposts=false&show_teaser=false';
+        }
+      })
+      .catch(function(){ /* fica o que já está no HTML */ });
+  })();
 
   /* --- mapa <-> índice de trajetória --- */
   var pts = document.querySelectorAll('.mapa .pt'), ufs = document.querySelectorAll('.uf');
